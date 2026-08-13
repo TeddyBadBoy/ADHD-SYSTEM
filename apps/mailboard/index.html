@@ -70,7 +70,7 @@ function card(t){const overdue=isOverdue(t)?' overdue':'';return `<article class
 function removeTask(id){tasks=tasks.filter(t=>t.id!==id);save()}
 $('addBtn').onclick=()=>{$('form').reset();$('urgency').value='normal';$('dlg').showModal()};
 $('cancel').onclick=()=>$('dlg').close();
-$('form').onsubmit=e=>{e.preventDefault();const title=$('title').value.trim();if(!title)return;tasks.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),title,status:'todo',urgency:$('urgency').value,due:$('due').value,epic:$('epic').value.trim(),redFlag:$('redFlag').checked});$('dlg').close();save()};
+$('form').onsubmit=e=>{e.preventDefault();const title=$('title').value.trim();if(!title)return;tasks.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),title,status:'backlog',urgency:$('urgency').value,due:$('due').value,epic:$('epic').value.trim(),redFlag:$('redFlag').checked});$('dlg').close();save()};
 $('clearBtn').onclick=()=>{if(confirm('Wyczyścić wszystkie zadania?')){tasks=[];save()}};
 render();
 </script>
